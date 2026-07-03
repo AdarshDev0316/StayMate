@@ -1,0 +1,147 @@
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { Mail, Lock, Eye, EyeOff, ArrowRight, Home, Sparkles, Search } from 'lucide-react';
+import useAuthStore from '../../store/authStore';
+
+export default function TenantLogin() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { login, isLoading } = useAuthStore();
+  const navigate = useNavigate();
+  const [showPass, setShowPass] = React.useState(false);
+
+  const onSubmit = async ({ email, password }) => {
+    const res = await login(email, password);
+    if (res.success) {
+      toast.success('Welcome back!');
+      navigate('/tenant/dashboard');
+    } else {
+      toast.error(res.message || 'Login failed');
+    }
+  };
+
+  return (
+    <div style={{ display: 'flex', minHeight: '100vh', fontFamily: 'var(--font)' }}>
+      {/* ── Left Brand Panel ─────────────────────────────────── */}
+      <div
+        style={{
+          flex: '0 0 45%',
+          background: 'linear-gradient(145deg, #064e3b 0%, #065f46 55%, #047857 100%)',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: '3rem 3.5rem',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ position: 'absolute', top: -60, left: -60, width: 300, height: 300, borderRadius: '50%', background: 'rgba(8,176,148,0.2)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: -80, right: -40, width: 260, height: 260, borderRadius: '50%', background: 'rgba(76,92,231,0.1)', pointerEvents: 'none' }} />
+
+        {/* Logo */}
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', marginBottom: '3rem' }}>
+          <div style={{ width: 40, height: 40, borderRadius: 10, background: 'linear-gradient(135deg, var(--secondary), #0EA5A4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Home size={20} color="#fff" />
+          </div>
+          <span style={{ fontWeight: 800, fontSize: '1.4rem', color: '#fff' }}>StayMate</span>
+        </Link>
+
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(8,176,148,0.25)', border: '1px solid rgba(8,176,148,0.4)', borderRadius: 'var(--radius-full)', padding: '4px 14px', marginBottom: '1.25rem', alignSelf: 'flex-start' }}>
+          <Search size={14} color="var(--secondary)" />
+          <span style={{ color: 'var(--secondary)', fontWeight: 600, fontSize: '0.8rem' }}>Tenant Portal</span>
+        </div>
+
+        <h1 style={{ color: '#fff', fontSize: '2.2rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
+          Welcome back,<br />
+          <span style={{ background: 'linear-gradient(90deg, var(--secondary), #a7f3d0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>future resident!</span>
+        </h1>
+        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' }}>
+          Sign in to discover AI-matched properties, chat with owners, and find your perfect home.
+        </p>
+
+        <div style={{ display: 'flex', gap: '2rem' }}>
+          {[{ label: 'Properties Listed', val: '50K+' }, { label: 'Cities Covered', val: '120+' }, { label: 'Happy Tenants', val: '15K+' }].map(({ label, val }) => (
+            <div key={label}>
+              <div style={{ fontWeight: 800, fontSize: '1.4rem', color: '#fff' }}>{val}</div>
+              <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Right Form Panel ─────────────────────────────────── */}
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: '2rem', overflowY: 'auto' }}>
+        <div style={{ width: '100%', maxWidth: 440 }}>
+          <div style={{ marginBottom: '2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: '0.5rem' }}>
+              <Sparkles size={18} color="var(--secondary)" />
+              <span style={{ fontSize: 'var(--text-sm)', color: 'var(--secondary)', fontWeight: 600 }}>Tenant Login</span>
+            </div>
+            <h2 style={{ fontSize: 'var(--text-3xl)', fontWeight: 800, marginBottom: '0.4rem' }}>Sign in to your account</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)' }}>
+              Don't have an account?{' '}
+              <Link to="/tenant/register" style={{ color: 'var(--secondary)', fontWeight: 600 }}>Create one free</Link>
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+            <div className="input-group">
+              <label className="input-label">Email Address</label>
+              <div className="input-with-icon">
+                <span className="input-icon"><Mail size={16} /></span>
+                <input
+                  className={`input${errors.email ? ' error' : ''}`}
+                  type="email"
+                  placeholder="you@example.com"
+                  {...register('email', {
+                    required: 'Email is required',
+                    pattern: { value: /^\S+@\S+\.\S+$/, message: 'Invalid email format' },
+                  })}
+                />
+              </div>
+              {errors.email && <span className="input-error">{errors.email.message}</span>}
+            </div>
+
+            <div className="input-group">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <label className="input-label">Password</label>
+                <Link to="/forgot-password" style={{ fontSize: 'var(--text-xs)', color: 'var(--secondary)', fontWeight: 500 }}>Forgot password?</Link>
+              </div>
+              <div className="input-with-icon" style={{ position: 'relative' }}>
+                <span className="input-icon"><Lock size={16} /></span>
+                <input
+                  className={`input${errors.password ? ' error' : ''}`}
+                  type={showPass ? 'text' : 'password'}
+                  placeholder="Your password"
+                  style={{ paddingRight: '2.75rem' }}
+                  {...register('password', { required: 'Password is required' })}
+                />
+                <button type="button" onClick={() => setShowPass(!showPass)} style={{ position: 'absolute', right: '0.875rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-faint)', display: 'flex', alignItems: 'center' }}>
+                  {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
+              {errors.password && <span className="input-error">{errors.password.message}</span>}
+            </div>
+
+            <button
+              type="submit"
+              className="btn btn-secondary btn-full btn-lg"
+              disabled={isLoading}
+              style={{ marginTop: '0.5rem' }}
+            >
+              {isLoading ? 'Signing in…' : (<>Sign In <ArrowRight size={16} /></>)}
+            </button>
+          </form>
+
+          <div className="divider-text" style={{ margin: '1.5rem 0' }}>or</div>
+
+          <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: 'var(--text-xs)' }}>
+            Are you a property owner?{' '}
+            <Link to="/owner/login" style={{ color: 'var(--primary)', fontWeight: 600 }}>Owner login →</Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
