@@ -12,7 +12,9 @@ export default function TenantLogin() {
   const [showPass, setShowPass] = React.useState(false);
 
   const onSubmit = async ({ email, password }) => {
+    const loadingToast = toast.loading('Connecting to server... (This may take up to 50s if the free server is waking up)', { duration: 50000 });
     const res = await login(email, password);
+    toast.dismiss(loadingToast);
     if (res.success) {
       toast.success('Welcome back!');
       navigate('/tenant/dashboard');

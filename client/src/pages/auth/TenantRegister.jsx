@@ -14,7 +14,9 @@ export default function TenantRegister() {
   const [done, setDone] = React.useState(false);
 
   const onSubmit = async (data) => {
+    const loadingToast = toast.loading('Connecting to server... (This may take up to 50s if the free server is waking up)', { duration: 50000 });
     const res = await authRegister({ ...data, role: 'tenant' });
+    toast.dismiss(loadingToast);
     if (res.success) {
       setDone(true);
     } else {
