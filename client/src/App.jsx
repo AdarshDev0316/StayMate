@@ -10,6 +10,9 @@ import { useSocket } from './hooks/useSocket';
 import LandingPage from './pages/public/LandingPage';
 import BrowseListings from './pages/public/BrowseListings';
 import ListingDetails from './pages/public/ListingDetails';
+import Privacy from './pages/public/Privacy';
+import Terms from './pages/public/Terms';
+import Contact from './pages/public/Contact';
 
 // Pages — Auth
 import OwnerRegister from './pages/auth/OwnerRegister';
@@ -78,6 +81,14 @@ const SocketInitializer = () => {
   return null;
 };
 
+// ─── Document Title Manager ──────────────────────────────────────────────────
+const PageTitle = ({ title, children }) => {
+  useEffect(() => {
+    document.title = title ? `${title} | StayMate` : 'StayMate | Rent & Flatmate Finder';
+  }, [title]);
+  return children ? children : <Outlet />;
+};
+
 // ─── App ──────────────────────────────────────────────────────────────────────
 function App() {
   const { isAuthenticated, fetchMe, accessToken } = useAuthStore();
@@ -112,53 +123,56 @@ function App() {
 
       <Routes>
         {/* ── Public ──────────────────────────────────────────────────── */}
-        <Route path="/" element={<><Navbar /><LandingPage /></>} />
-        <Route path="/browse" element={<><Navbar /><BrowseListings /></>} />
-        <Route path="/listings/:id" element={<><Navbar /><ListingDetails /></>} />
-        <Route path="/verify-email" element={<VerifyEmail />} />
-        <Route path="/auth/callback" element={<AuthCallback />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/" element={<PageTitle title="Home"><Navbar /><LandingPage /></PageTitle>} />
+        <Route path="/browse" element={<PageTitle title="Browse Rooms"><Navbar /><BrowseListings /></PageTitle>} />
+        <Route path="/listings/:id" element={<PageTitle title="Room Details"><Navbar /><ListingDetails /></PageTitle>} />
+        <Route path="/verify-email" element={<PageTitle title="Verify Email"><VerifyEmail /></PageTitle>} />
+        <Route path="/auth/callback" element={<PageTitle title="Authenticating..."><AuthCallback /></PageTitle>} />
+        <Route path="/forgot-password" element={<PageTitle title="Forgot Password"><ForgotPassword /></PageTitle>} />
+        <Route path="/reset-password" element={<PageTitle title="Reset Password"><ResetPassword /></PageTitle>} />
+        <Route path="/privacy" element={<PageTitle title="Privacy Policy"><Navbar /><Privacy /></PageTitle>} />
+        <Route path="/terms" element={<PageTitle title="Terms of Service"><Navbar /><Terms /></PageTitle>} />
+        <Route path="/contact" element={<PageTitle title="Contact Us"><Navbar /><Contact /></PageTitle>} />
 
         {/* ── Auth (guest only) ────────────────────────────────────────── */}
         <Route element={<GuestRoute />}>
-          <Route path="/owner/register" element={<OwnerRegister />} />
-          <Route path="/owner/login" element={<OwnerLogin />} />
-          <Route path="/tenant/register" element={<TenantRegister />} />
-          <Route path="/tenant/login" element={<TenantLogin />} />
-          <Route path="/login" element={<TenantLogin />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/owner/register" element={<PageTitle title="Owner Registration"><OwnerRegister /></PageTitle>} />
+          <Route path="/owner/login" element={<PageTitle title="Owner Login"><OwnerLogin /></PageTitle>} />
+          <Route path="/tenant/register" element={<PageTitle title="Tenant Registration"><TenantRegister /></PageTitle>} />
+          <Route path="/tenant/login" element={<PageTitle title="Tenant Login"><TenantLogin /></PageTitle>} />
+          <Route path="/login" element={<PageTitle title="Login"><TenantLogin /></PageTitle>} />
+          <Route path="/admin/login" element={<PageTitle title="Admin Login"><AdminLogin /></PageTitle>} />
         </Route>
 
         {/* ── Owner Routes ─────────────────────────────────────────────── */}
         <Route element={<ProtectedRoute roles={['owner']} />}>
-          <Route path="/owner/dashboard" element={<OwnerDashboard />} />
-          <Route path="/owner/listings/create" element={<CreateListing />} />
-          <Route path="/owner/listings" element={<MyListings />} />
-          <Route path="/owner/listings/:id/edit" element={<EditListing />} />
-          <Route path="/owner/interests" element={<InterestRequests />} />
-          <Route path="/owner/chat" element={<OwnerChat />} />
-          <Route path="/owner/chat/:conversationId" element={<OwnerChat />} />
-          <Route path="/owner/profile" element={<OwnerProfile />} />
+          <Route path="/owner/dashboard" element={<PageTitle title="Owner Dashboard"><OwnerDashboard /></PageTitle>} />
+          <Route path="/owner/listings/create" element={<PageTitle title="Create Listing"><CreateListing /></PageTitle>} />
+          <Route path="/owner/listings" element={<PageTitle title="My Listings"><MyListings /></PageTitle>} />
+          <Route path="/owner/listings/:id/edit" element={<PageTitle title="Edit Listing"><EditListing /></PageTitle>} />
+          <Route path="/owner/interests" element={<PageTitle title="Interest Requests"><InterestRequests /></PageTitle>} />
+          <Route path="/owner/chat" element={<PageTitle title="Messages"><OwnerChat /></PageTitle>} />
+          <Route path="/owner/chat/:conversationId" element={<PageTitle title="Messages"><OwnerChat /></PageTitle>} />
+          <Route path="/owner/profile" element={<PageTitle title="My Profile"><OwnerProfile /></PageTitle>} />
         </Route>
 
         {/* ── Tenant Routes ─────────────────────────────────────────────── */}
         <Route element={<ProtectedRoute roles={['tenant']} />}>
-          <Route path="/tenant/dashboard" element={<TenantDashboard />} />
-          <Route path="/tenant/profile/create" element={<TenantProfile />} />
-          <Route path="/tenant/matches" element={<MyMatches />} />
-          <Route path="/tenant/requests" element={<MyRequests />} />
-          <Route path="/tenant/saved" element={<SavedListings />} />
-          <Route path="/tenant/chat" element={<TenantChat />} />
-          <Route path="/tenant/chat/:conversationId" element={<TenantChat />} />
-          <Route path="/tenant/profile" element={<TenantProfile />} />
+          <Route path="/tenant/dashboard" element={<PageTitle title="Tenant Dashboard"><TenantDashboard /></PageTitle>} />
+          <Route path="/tenant/profile/create" element={<PageTitle title="Create Profile"><TenantProfile /></PageTitle>} />
+          <Route path="/tenant/matches" element={<PageTitle title="My Matches"><MyMatches /></PageTitle>} />
+          <Route path="/tenant/requests" element={<PageTitle title="My Requests"><MyRequests /></PageTitle>} />
+          <Route path="/tenant/saved" element={<PageTitle title="Saved Rooms"><SavedListings /></PageTitle>} />
+          <Route path="/tenant/chat" element={<PageTitle title="Messages"><TenantChat /></PageTitle>} />
+          <Route path="/tenant/chat/:conversationId" element={<PageTitle title="Messages"><TenantChat /></PageTitle>} />
+          <Route path="/tenant/profile" element={<PageTitle title="My Profile"><TenantProfile /></PageTitle>} />
         </Route>
 
         {/* ── Admin Routes ─────────────────────────────────────────────── */}
         <Route element={<ProtectedRoute roles={['admin']} />}>
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/users" element={<UserManagement />} />
-          <Route path="/admin/listings" element={<ListingManagement />} />
+          <Route path="/admin/dashboard" element={<PageTitle title="Admin Dashboard"><AdminDashboard /></PageTitle>} />
+          <Route path="/admin/users" element={<PageTitle title="User Management"><UserManagement /></PageTitle>} />
+          <Route path="/admin/listings" element={<PageTitle title="Listing Management"><ListingManagement /></PageTitle>} />
         </Route>
 
         {/* ── Fallback ─────────────────────────────────────────────────── */}

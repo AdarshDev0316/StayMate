@@ -8,12 +8,16 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// ─── Request Interceptor — attach token ─────────────────────────────────────
+// ─── Request Interceptor — attach token & handle FormData ─────────────────────
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('accessToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+    }
+    // Let the browser set the Content-Type automatically (with boundary) for FormData
+    if (config.data instanceof FormData) {
+      delete config.headers['Content-Type'];
     }
     return config;
   },

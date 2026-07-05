@@ -6,6 +6,7 @@ const connectDB = require('./src/config/db');
 
 const PORT = process.env.PORT || 5000;
 
+console.log("URI from env:", process.env.MONGODB_URI ? process.env.MONGODB_URI.substring(0, 50) + "..." : "undefined");
 // Connect to MongoDB then start server
 connectDB().then(() => {
   const server = http.createServer(app);

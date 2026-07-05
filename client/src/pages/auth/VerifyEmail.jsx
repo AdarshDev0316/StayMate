@@ -63,14 +63,11 @@ export default function VerifyEmail() {
         }}
       >
         {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: '2rem' }}>
-          <div style={{ width: 36, height: 36, borderRadius: 8, background: 'linear-gradient(135deg, var(--primary), #6366F1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Home size={18} color="#fff" />
-          </div>
-          <span style={{ fontWeight: 800, fontSize: '1.2rem', color: 'var(--text)' }}>StayMate</span>
-        </div>
-
-        {status === 'verifying' && (
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--space-8)' }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)', textDecoration: 'none', color: 'var(--text)' }}>
+            <img src="/logo.jpg" alt="StayMate" style={{ height: '48px', objectFit: 'contain', borderRadius: '4px' }} />
+          </Link>
+        </div> {status === 'verifying' && (
           <>
             <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
               <Loader2 size={32} color="var(--primary)" style={{ animation: 'spin 1s linear infinite' }} />

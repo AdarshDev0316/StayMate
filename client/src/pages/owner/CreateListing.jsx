@@ -11,20 +11,24 @@ import toast from 'react-hot-toast';
 const schema = z.object({
   title: z.string().min(10, 'Title must be at least 10 characters').max(100),
   description: z.string().max(2000).optional(),
-  'location.city': z.string().min(2, 'City is required'),
-  'location.address': z.string().optional(),
-  'location.state': z.string().optional(),
-  'location.pincode': z.string().optional(),
+  location: z.object({
+    city: z.string().min(2, 'City is required'),
+    address: z.string().optional(),
+    state: z.string().optional(),
+    pincode: z.string().optional(),
+  }),
   rent: z.string().min(1, 'Rent is required').refine(v => !isNaN(Number(v)) && Number(v) > 0, 'Enter valid rent'),
   deposit: z.string().optional(),
   roomType: z.enum(['single', 'double', 'shared', 'entire'], { required_error: 'Select room type' }),
   furnishing: z.enum(['fully', 'semi', 'unfurnished'], { required_error: 'Select furnishing' }),
   availableFrom: z.string().min(1, 'Available from date is required'),
-  'preferences.gender': z.enum(['any', 'male', 'female']).optional(),
-  'preferences.occupation': z.enum(['any', 'student', 'professional']).optional(),
-  'preferences.smoking': z.boolean().optional(),
-  'preferences.pets': z.boolean().optional(),
-  'preferences.vegetarian': z.boolean().optional(),
+  preferences: z.object({
+    gender: z.enum(['any', 'male', 'female']).optional(),
+    occupation: z.enum(['any', 'student', 'professional']).optional(),
+    smoking: z.boolean().optional(),
+    pets: z.boolean().optional(),
+    vegetarian: z.boolean().optional(),
+  }).optional(),
 });
 
 const AMENITIES = ['WiFi', 'AC', 'Geyser', 'Washing Machine', 'Parking', 'Security', 'Power Backup', 'Lift', 'CCTV', 'Gas Pipeline', 'Gym'];
@@ -37,6 +41,7 @@ const CreateListing = () => {
   const [imagePreviews, setImagePreviews] = useState([]);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const { register, handleSubmit, formState: { errors }, watch } = useForm({ resolver: zodResolver(schema) });
 
@@ -58,16 +63,17 @@ const CreateListing = () => {
   const onSubmit = async (data) => {
     if (images.length === 0) { toast.error('Please upload at least one image'); return; }
     setIsSubmitting(true);
+    setUploadProgress(0);
     try {
       const fd = new FormData();
       // Flatten nested form fields
       fd.append('title', data.title);
       fd.append('description', data.description || '');
       fd.append('location', JSON.stringify({
-        city: data['location.city'],
-        address: data['location.address'],
-        state: data['location.state'],
-        pincode: data['location.pincode'],
+        city: data.location?.city,
+        address: data.location?.address,
+        state: data.location?.state,
+        pincode: data.location?.pincode,
       }));
       fd.append('rent', data.rent);
       fd.append('deposit', data.deposit || 0);
@@ -76,15 +82,20 @@ const CreateListing = () => {
       fd.append('availableFrom', data.availableFrom);
       fd.append('amenities', JSON.stringify(selectedAmenities));
       fd.append('preferences', JSON.stringify({
-        gender: data['preferences.gender'] || 'any',
-        occupation: data['preferences.occupation'] || 'any',
-        smoking: data['preferences.smoking'] || false,
-        pets: data['preferences.pets'] || false,
-        vegetarian: data['preferences.vegetarian'] || false,
+        gender: data.preferences?.gender || 'any',
+        occupation: data.preferences?.occupation || 'any',
+        smoking: data.preferences?.smoking || false,
+        pets: data.preferences?.pets || false,
+        vegetarian: data.preferences?.vegetarian || false,
       }));
       images.forEach(img => fd.append('images', img));
 
-      await api.post('/listings', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+      await api.post('/listings', fd, {
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          setUploadProgress(percentCompleted);
+        }
+      });
       toast.success('Listing created successfully!');
       navigate('/owner/listings');
     } catch (err) {
@@ -95,6 +106,19 @@ const CreateListing = () => {
   const inputStyle = { width: '100%', padding: '0.7rem 1rem', background: 'var(--surface)', border: '1.5px solid var(--border)', borderRadius: 'var(--radius)', fontSize: 'var(--text-sm)', fontFamily: 'var(--font)', color: 'var(--text)', outline: 'none' };
   const labelStyle = { fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text)', display: 'block', marginBottom: 6 };
   const errStyle = { fontSize: 12, color: 'var(--danger)', marginTop: 4 };
+
+  const onError = (errors) => {
+    const firstError = Object.values(errors)[0];
+    if (firstError && firstError.message) {
+      toast.error(firstError.message);
+    } else if (errors.location) {
+      toast.error('Please complete the location details properly');
+    } else if (errors.preferences) {
+      toast.error('Please check your tenant preferences');
+    } else {
+      toast.error('Please fill all required fields correctly');
+    }
+  };
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'var(--sidebar-width) 1fr', minHeight: '100vh' }}>
@@ -108,7 +132,7 @@ const CreateListing = () => {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit, onError)}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 'var(--space-6)', alignItems: 'start' }}>
             {/* Left Column */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
@@ -136,7 +160,7 @@ const CreateListing = () => {
                   <div>
                     <label style={labelStyle}>City *</label>
                     <input {...register('location.city')} placeholder="e.g. Bangalore" style={inputStyle} />
-                    {errors['location.city'] && <p style={errStyle}>{errors['location.city'].message}</p>}
+                    {errors.location?.city && <p style={errStyle}>{errors.location.city.message}</p>}
                   </div>
                   <div>
                     <label style={labelStyle}>State</label>
@@ -281,10 +305,21 @@ const CreateListing = () => {
               </div>
 
               {/* Submit */}
+              {isSubmitting && (
+                <div style={{ marginBottom: 'var(--space-3)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'var(--text-muted)', marginBottom: 4, fontWeight: 600 }}>
+                    <span>{uploadProgress < 100 ? 'Uploading images...' : 'Processing...'}</span>
+                    <span>{uploadProgress}%</span>
+                  </div>
+                  <div style={{ width: '100%', background: 'var(--border)', borderRadius: 4, height: 6, overflow: 'hidden' }}>
+                    <div style={{ width: `${uploadProgress}%`, height: '100%', background: 'var(--primary)', transition: 'width 0.2s ease-in-out' }} />
+                  </div>
+                </div>
+              )}
               <button type="submit" disabled={isSubmitting} className="btn btn-primary btn-lg" style={{ width: '100%', justifyContent: 'center', gap: 8 }}>
-                {isSubmitting ? <><Loader2 size={18} className="animate-spin" /> Publishing...</> : <><Plus size={18} /> Publish Listing</>}
+                {isSubmitting ? <><Loader2 size={18} className="animate-spin" /> {uploadProgress < 100 ? `Uploading...` : 'Publishing...'}</> : <><Plus size={18} /> Publish Listing</>}
               </button>
-              <button type="button" className="btn btn-ghost" style={{ width: '100%' }} onClick={() => navigate(-1)}>Cancel</button>
+              <button type="button" className="btn btn-ghost" style={{ width: '100%' }} onClick={() => navigate(-1)} disabled={isSubmitting}>Cancel</button>
             </div>
           </div>
         </form>

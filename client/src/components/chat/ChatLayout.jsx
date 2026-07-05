@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Send, Check, CheckCheck, MapPin, MoreVertical, Loader2, ArrowLeft } from 'lucide-react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { Send, Check, CheckCheck, MapPin, MoreVertical, Loader2, ArrowLeft, MessageCircle } from 'lucide-react';
 import useAuthStore from '../../store/authStore';
 import useChatStore from '../../store/chatStore';
 import { useSocket } from '../../hooks/useSocket';

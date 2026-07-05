@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { Building2, Mail, Lock, Eye, EyeOff, ArrowRight, Home, CheckCircle } from 'lucide-react';
+import { Building2, Mail, Lock, Eye, EyeOff, ArrowRight, ArrowLeft, Home, CheckCircle } from 'lucide-react';
 import useAuthStore from '../../store/authStore';
 
 export default function OwnerRegister() {
@@ -52,11 +52,8 @@ export default function OwnerRegister() {
         <div style={{ position: 'absolute', top: '40%', right: -40, width: 180, height: 180, borderRadius: '50%', background: 'rgba(99,102,241,0.08)', pointerEvents: 'none' }} />
 
         {/* Logo */}
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', marginBottom: '2.5rem' }}>
-          <div style={{ width: 40, height: 40, borderRadius: 10, background: 'linear-gradient(135deg, var(--primary), #6366F1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Home size={20} color="#fff" />
-          </div>
-          <span style={{ fontWeight: 800, fontSize: '1.4rem', color: '#fff' }}>StayMate</span>
+        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)', textDecoration: 'none', marginBottom: 'var(--space-12)' }}>
+          <img src="/logo.jpg" alt="StayMate" style={{ height: '48px', objectFit: 'contain', borderRadius: '4px' }} />
         </Link>
 
         <div style={{ marginBottom: '1.5rem' }}>
@@ -95,18 +92,11 @@ export default function OwnerRegister() {
       </div>
 
       {/* ── Right Form Panel ─────────────────────────────────── */}
-      <div
-        style={{
-          flex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'var(--bg)',
-          padding: '2rem',
-          overflowY: 'auto',
-        }}
-      >
-        <div style={{ width: '100%', maxWidth: 460 }}>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: '2rem', overflowY: 'auto' }}>
+        <div style={{ width: '100%', maxWidth: 440 }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)', fontSize: 'var(--text-sm)', textDecoration: 'none', marginBottom: '2rem', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={e => e.target.style.color = 'var(--text)'} onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>
+            <ArrowLeft size={16} /> Back to Home
+          </Link>
           {done ? (
             // ── Success State ──
             <div style={{ textAlign: 'center', padding: '2rem 0' }}>

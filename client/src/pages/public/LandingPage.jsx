@@ -325,7 +325,7 @@ const LandingPage = () => {
       {/* ══════════════════════════════════════════════════════════════
           FEATURES SECTION
       ══════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: 'var(--space-24) 0', background: 'var(--bg)' }}>
+      <section id="about" style={{ padding: 'var(--space-24) 0', background: 'var(--bg)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 'var(--space-16)' }}>
             <span className="badge badge-primary" style={{ marginBottom: 'var(--space-4)' }}>Key Features</span>
@@ -497,22 +497,23 @@ const LandingPage = () => {
       <footer style={{ background: 'var(--dark)', padding: 'var(--space-8) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-            <div style={{ width: 28, height: 28, background: 'linear-gradient(135deg, var(--primary), var(--secondary))', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Home size={14} color="#fff" />
-            </div>
-            <span style={{ color: '#fff', fontWeight: 700 }}>StayMate</span>
+            <img src="/logo.jpg" alt="StayMate" style={{ height: '32px', objectFit: 'contain', borderRadius: '4px' }} />
           </div>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 'var(--text-sm)' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', margin: 0 }}>
             © {new Date().getFullYear()} StayMate. Built with ❤️ for renters.
           </p>
           <div style={{ display: 'flex', gap: 'var(--space-6)' }}>
-            {['Privacy', 'Terms', 'Contact'].map(item => (
-              <a key={item} href="#" style={{ color: 'rgba(255,255,255,0.4)', fontSize: 'var(--text-sm)', textDecoration: 'none', transition: 'color var(--transition-fast)' }}
+            {[
+              { name: 'Privacy', path: '/privacy' },
+              { name: 'Terms', path: '/terms' },
+              { name: 'Contact', path: '/contact' }
+            ].map(item => (
+              <Link key={item.name} to={item.path} style={{ color: 'rgba(255,255,255,0.4)', fontSize: 'var(--text-sm)', textDecoration: 'none', transition: 'color var(--transition-fast)' }}
                 onMouseEnter={e => e.target.style.color = '#fff'}
                 onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.4)'}
               >
-                {item}
-              </a>
+                {item.name}
+              </Link>
             ))}
           </div>
         </div>

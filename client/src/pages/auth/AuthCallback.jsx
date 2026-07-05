@@ -44,12 +44,9 @@ export default function AuthCallback() {
         gap: '1.5rem',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{ width: 40, height: 40, borderRadius: 10, background: 'linear-gradient(135deg, var(--primary), #6366F1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Home size={20} color="#fff" />
-        </div>
-        <span style={{ fontWeight: 800, fontSize: '1.4rem', color: '#fff' }}>StayMate</span>
-      </div>
+        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)', textDecoration: 'none', marginBottom: 'var(--space-8)' }}>
+          <img src="/logo.jpg" alt="StayMate" style={{ height: '48px', objectFit: 'contain', borderRadius: '4px' }} />
+        </Link>
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
         <Loader2 size={36} color="var(--primary)" style={{ animation: 'spin 1s linear infinite' }} />

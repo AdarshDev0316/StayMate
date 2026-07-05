@@ -26,11 +26,10 @@ export default function ForgotPassword() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, var(--bg) 0%, var(--primary-light) 100%)', fontFamily: 'var(--font)', padding: '2rem' }}>
       <div className="card" style={{ width: '100%', maxWidth: 460, padding: '2.5rem', borderRadius: 'var(--radius-xl)', textAlign: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: '2rem' }}>
-          <div style={{ width: 36, height: 36, borderRadius: 8, background: 'linear-gradient(135deg, var(--primary), #6366F1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Home size={18} color="#fff" />
-          </div>
-          <span style={{ fontWeight: 800, fontSize: '1.2rem' }}>StayMate</span>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--space-8)' }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)', textDecoration: 'none', color: 'var(--text)' }}>
+            <img src="/logo.jpg" alt="StayMate" style={{ height: '48px', objectFit: 'contain', borderRadius: '4px' }} />
+          </Link>
         </div>
 
         {sent ? (

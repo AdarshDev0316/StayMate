@@ -48,14 +48,8 @@ const Navbar = () => {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 'var(--navbar-height)', gap: 'var(--space-6)' }}>
 
         {/* ── Logo ─────────────────────────────────────────────────────────── */}
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', textDecoration: 'none', flexShrink: 0 }}>
-          <div style={{ width: 36, height: 36, background: 'linear-gradient(135deg, var(--primary), var(--secondary))', borderRadius: 'var(--radius)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Home size={18} color="#fff" strokeWidth={2.5} />
-          </div>
-          <div>
-            <span style={{ fontSize: 'var(--text-lg)', fontWeight: 800, color: isScrolled || !isLanding ? 'var(--text)' : '#fff', letterSpacing: '-0.03em' }}>StayMate</span>
-            <span style={{ display: 'block', fontSize: 9, color: isScrolled || !isLanding ? 'var(--text-faint)' : 'rgba(255,255,255,0.6)', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', lineHeight: 1 }}>Rent & Flatmate Finder</span>
-          </div>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', textDecoration: 'none' }}>
+          <img src="/logo.jpg" alt="StayMate" style={{ height: '36px', objectFit: 'contain', borderRadius: '4px' }} />
         </Link>
 
         {/* ── Desktop Nav Links ─────────────────────────────────────────────── */}
@@ -76,6 +70,17 @@ const Navbar = () => {
             }}
               onMouseEnter={e => { e.target.style.background = isScrolled || !isLanding ? 'var(--bg-2)' : 'rgba(255,255,255,0.1)'; e.target.style.color = isScrolled || !isLanding ? 'var(--text)' : '#fff'; }}
               onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = isScrolled || !isLanding ? 'var(--text-muted)' : 'rgba(255,255,255,0.85)'; }}
+              onClick={(e) => {
+                if (to.includes('#')) {
+                  const id = to.split('#')[1];
+                  const element = document.getElementById(id);
+                  if (element) {
+                    e.preventDefault();
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState(null, '', to);
+                  }
+                }
+              }}
             >
               {label}
             </Link>
