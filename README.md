@@ -71,8 +71,8 @@ cd client
 npm run dev
 ```
 
-App runs at: **http://localhost:5173**  
-API runs at: **http://localhost:5000**
+App runs at: **https://stay-mate-five.vercel.app/**  
+API runs at: **https://staymate-backend-vijh.onrender.com**
 
 ---
 
