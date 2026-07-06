@@ -142,7 +142,7 @@ const ListingDetails = () => {
           </button>
           <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
             <button className="btn btn-ghost btn-icon" onClick={handleSave} title={isSaved ? 'Unsave' : 'Save'}>
-              <Heart size={18} fill={isSaved ? '#EF4444' : 'none'} color={isSaved ? '#EF4444' : 'var(--text-muted)'} />
+              <Heart size={18} fill={isSaved ? 'var(--primary)' : 'none'} color={isSaved ? 'var(--primary)' : 'var(--text-muted)'} />
             </button>
             <button className="btn btn-ghost btn-icon" title="Share">
               <Share2 size={18} />

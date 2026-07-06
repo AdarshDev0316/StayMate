@@ -51,7 +51,7 @@ export default function TenantLogin() {
           <span style={{ color: 'var(--secondary)', fontWeight: 600, fontSize: '0.8rem' }}>Tenant Portal</span>
         </div>
 
-        <h1 style={{ color: '#fff', fontSize: '2.2rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
+        <h1 style={{ color: 'var(--dark)', fontSize: '2.2rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
           Welcome back,<br />
           <span style={{ background: 'linear-gradient(90deg, var(--secondary), #a7f3d0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>future resident!</span>
         </h1>
@@ -62,7 +62,7 @@ export default function TenantLogin() {
         <div style={{ display: 'flex', gap: '2rem' }}>
           {[{ label: 'Properties Listed', val: '50K+' }, { label: 'Cities Covered', val: '120+' }, { label: 'Happy Tenants', val: '15K+' }].map(({ label, val }) => (
             <div key={label}>
-              <div style={{ fontWeight: 800, fontSize: '1.4rem', color: '#fff' }}>{val}</div>
+              <div style={{ fontWeight: 800, fontSize: '1.4rem', color: 'var(--dark)' }}>{val}</div>
               <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>{label}</div>
             </div>
           ))}

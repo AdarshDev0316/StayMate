@@ -136,7 +136,7 @@ const LandingPage = () => {
       ══════════════════════════════════════════════════════════════ */}
       <section style={{
         minHeight: 'calc(100vh - var(--navbar-height))',
-        background: 'linear-gradient(135deg, var(--dark) 0%, #1a1040 40%, #0d2137 100%)',
+        background: 'var(--bg)',
         display: 'flex', alignItems: 'center',
         position: 'relative', overflow: 'hidden',
         marginTop: 'calc(-1 * var(--navbar-height))',
@@ -161,18 +161,18 @@ const LandingPage = () => {
             <h1 style={{
               fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
               fontWeight: 900,
-              color: '#fff',
+              color: 'var(--text)',
               lineHeight: 1.1,
               marginBottom: 'var(--space-6)',
               letterSpacing: '-0.03em',
             }}>
               Find Your Perfect<br />
-              <span style={{ backgroundImage: 'linear-gradient(135deg, var(--accent), var(--secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              <span style={{ color: 'var(--primary)' }}>
                 Room or Flatmate
               </span>
             </h1>
 
-            <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: 'var(--space-8)', maxWidth: 480 }}>
+            <p style={{ fontSize: 'var(--text-lg)', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 'var(--space-8)', maxWidth: 480 }}>
               AI matches you to the right rooms and flatmates based on your preferences, lifestyle, and budget.
             </p>
 
@@ -463,7 +463,7 @@ const LandingPage = () => {
       ══════════════════════════════════════════════════════════════ */}
       <section style={{
         padding: 'var(--space-24) 0',
-        background: 'linear-gradient(135deg, var(--dark) 0%, #1a1040 100%)',
+        background: 'var(--surface)',
         position: 'relative', overflow: 'hidden',
       }}>
         <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
@@ -473,20 +473,20 @@ const LandingPage = () => {
           <span className="badge" style={{ background: 'rgba(247,248,111,0.15)', color: 'var(--accent)', border: '1px solid rgba(247,248,111,0.3)', marginBottom: 'var(--space-6)' }}>
             Ready to Start?
           </span>
-          <h2 style={{ color: '#fff', fontWeight: 900, fontSize: 'var(--text-5xl)', letterSpacing: '-0.03em', marginBottom: 'var(--space-6)' }}>
+          <h2 style={{ color: 'var(--text)', fontWeight: 900, fontSize: 'var(--text-5xl)', letterSpacing: '-0.03em', marginBottom: 'var(--space-6)' }}>
             Your perfect room is<br />
-            <span style={{ backgroundImage: 'linear-gradient(135deg, var(--accent), var(--secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ color: 'var(--primary)' }}>
               one match away
             </span>
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 'var(--text-lg)', marginBottom: 'var(--space-10)', maxWidth: 480, margin: '0 auto var(--space-10)' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-lg)', marginBottom: 'var(--space-10)', maxWidth: 480, margin: '0 auto var(--space-10)' }}>
             Join thousands of tenants and owners on StayMate. Get matched with your ideal room in minutes.
           </p>
           <div style={{ display: 'flex', gap: 'var(--space-4)', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/tenant/register" className="btn btn-xl" style={{ background: 'linear-gradient(135deg, var(--secondary), #0EA5A4)', color: '#fff', boxShadow: '0 4px 24px rgba(8,176,148,0.4)' }}>
+            <Link to="/tenant/register" className="btn btn-xl btn-primary">
               Find a Room — Free <ArrowRight size={18} />
             </Link>
-            <Link to="/owner/register" className="btn btn-xl" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)' }}>
+            <Link to="/owner/register" className="btn btn-xl btn-secondary">
               List Your Room <Building2 size={18} />
             </Link>
           </div>
@@ -494,7 +494,7 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer style={{ background: 'var(--dark)', padding: 'var(--space-8) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <footer style={{ background: 'var(--surface-2)', padding: 'var(--space-8) 0', borderTop: '1px solid var(--border)' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
             <img src="/logo.jpg" alt="StayMate" style={{ height: '32px', objectFit: 'contain', borderRadius: '4px' }} />

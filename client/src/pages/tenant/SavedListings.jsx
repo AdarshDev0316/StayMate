@@ -39,7 +39,7 @@ const SavedListings = () => {
       <Sidebar role="tenant" />
       <main className="main-content">
         <div style={{ marginBottom: 'var(--space-8)' }}>
-          <h1 style={{ fontSize: 'var(--text-3xl)', fontWeight: 900, letterSpacing: '-0.03em', display: 'flex', alignItems: 'center', gap: 10 }}><Heart color="var(--danger)" fill="var(--danger)" /> Saved Rooms</h1>
+          <h1 style={{ fontSize: 'var(--text-3xl)', fontWeight: 900, letterSpacing: '-0.03em', display: 'flex', alignItems: 'center', gap: 10 }}><Heart color="var(--primary)" fill="var(--primary)" /> Saved Rooms</h1>
           <p style={{ color: 'var(--text-muted)', marginTop: 4 }}>Properties you've bookmarked for later</p>
         </div>
 
@@ -62,7 +62,7 @@ const SavedListings = () => {
                     onClick={(e) => handleUnsave(e, listing._id)}
                     style={{ position: 'absolute', top: 12, right: 12, background: '#fff', border: 'none', width: 32, height: 32, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: 'var(--shadow)' }}
                   >
-                    <Heart size={16} color="var(--danger)" fill="var(--danger)" />
+                    <Heart size={16} color="var(--primary)" fill="var(--primary)" />
                   </button>
                 </div>
                 <div className="card-body" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>

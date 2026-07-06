@@ -52,7 +52,7 @@ export default function OwnerLogin() {
           <span style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '0.8rem' }}>Property Owner Portal</span>
         </div>
 
-        <h1 style={{ color: '#fff', fontSize: '2.2rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
+        <h1 style={{ color: 'var(--dark)', fontSize: '2.2rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
           Welcome back,<br />
           <span style={{ background: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>property owner!</span>
         </h1>
@@ -64,7 +64,7 @@ export default function OwnerLogin() {
         <div style={{ display: 'flex', gap: '2rem' }}>
           {[{ label: 'Listings Active', val: '12K+' }, { label: 'Tenants Matched', val: '48K+' }, { label: 'Success Rate', val: '94%' }].map(({ label, val }) => (
             <div key={label}>
-              <div style={{ fontWeight: 800, fontSize: '1.4rem', color: '#fff' }}>{val}</div>
+              <div style={{ fontWeight: 800, fontSize: '1.4rem', color: 'var(--dark)' }}>{val}</div>
               <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>{label}</div>
             </div>
           ))}

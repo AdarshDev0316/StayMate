@@ -60,7 +60,7 @@ export default function TenantRegister() {
           <span style={{ color: 'var(--secondary)', fontWeight: 600, fontSize: '0.8rem' }}>Tenant Portal</span>
         </div>
 
-        <h1 style={{ color: '#fff', fontSize: '2.2rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
+        <h1 style={{ color: 'var(--dark)', fontSize: '2.2rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
           Find your perfect<br />
           <span style={{ background: 'linear-gradient(90deg, var(--secondary), #a7f3d0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>home today</span>
         </h1>
@@ -83,7 +83,7 @@ export default function TenantRegister() {
             <Star size={14} fill="none" color="#F59E0B" />
           </div>
           <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem' }}>
-            Loved by <strong style={{ color: '#fff' }}>15,000+</strong> happy tenants
+            Loved by <strong style={{ color: 'var(--dark)' }}>15,000+</strong> happy tenants
           </span>
         </div>
       </div>

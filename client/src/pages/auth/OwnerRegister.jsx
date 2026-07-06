@@ -63,7 +63,7 @@ export default function OwnerRegister() {
             <Building2 size={14} color="var(--primary)" />
             <span style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '0.8rem' }}>Property Owner</span>
           </div>
-          <h1 style={{ color: '#fff', fontSize: '2.2rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
+          <h1 style={{ color: 'var(--dark)', fontSize: '2.2rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '0.75rem' }}>
             Grow your rental<br />
             <span style={{ background: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>business today</span>
           </h1>
@@ -88,7 +88,7 @@ export default function OwnerRegister() {
             ))}
           </div>
           <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem' }}>
-            Join <strong style={{ color: '#fff' }}>2,400+</strong> property owners
+            Join <strong style={{ color: 'var(--dark)' }}>2,400+</strong> property owners
           </span>
         </div>
       </div>

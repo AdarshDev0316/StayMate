@@ -132,7 +132,7 @@ const TenantDashboard = () => {
             {/* Quick Actions */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--space-3)' }}>
               <Link to="/tenant/saved" className="card card-body" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', padding: 'var(--space-4)', textDecoration: 'none', color: 'var(--text)' }}>
-                <div style={{ width: 36, height: 36, borderRadius: 'var(--radius)', background: 'var(--danger-light)', color: 'var(--danger)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Heart size={18} /></div>
+                <div style={{ width: 36, height: 36, borderRadius: 'var(--radius)', background: 'var(--primary-light)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Heart size={18} /></div>
                 <div style={{ fontWeight: 600 }}>Saved Rooms</div>
               </Link>
               <Link to="/tenant/chat" className="card card-body" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', padding: 'var(--space-4)', textDecoration: 'none', color: 'var(--text)' }}>
