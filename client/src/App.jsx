@@ -113,7 +113,7 @@ function App() {
             boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
           },
           success: {
-            iconTheme: { primary: '#08B094', secondary: '#fff' },
+            iconTheme: { primary: '#1F7A4D', secondary: '#fff' },
           },
           error: {
             iconTheme: { primary: '#EF4444', secondary: '#fff' },

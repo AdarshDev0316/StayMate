@@ -283,7 +283,7 @@ const ListingDetails = () => {
               <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 'var(--space-3)' }}>Posted by</p>
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-5)' }}>
                 <img
-                  src={listing.owner?.avatar?.url || `https://ui-avatars.com/api/?name=${encodeURIComponent(listing.owner?.name || 'Owner')}&background=4C5CE7&color=fff`}
+                  src={listing.owner?.avatar?.url || `https://ui-avatars.com/api/?name=${encodeURIComponent(listing.owner?.name || 'Owner')}&background=1F7A4D&color=fff`}
                   alt={listing.owner?.name}
                   className="avatar avatar-lg"
                 />

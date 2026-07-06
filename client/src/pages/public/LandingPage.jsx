@@ -257,7 +257,7 @@ const LandingPage = () => {
             {/* Main image */}
             <div style={{
               borderRadius: 'var(--radius-2xl)', overflow: 'hidden',
-              border: '1px solid rgba(255,255,255,0.1)',
+              border: '1px solid var(--border)',
               boxShadow: '0 32px 80px rgba(0,0,0,0.4)',
               aspectRatio: '4/3',
             }}>
@@ -317,8 +317,8 @@ const LandingPage = () => {
 
         {/* Scroll indicator */}
         <div style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', animation: 'bounce 2s ease infinite', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Scroll</span>
-          <ChevronDown size={20} color="rgba(255,255,255,0.4)" />
+          <span style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Scroll</span>
+          <ChevronDown size={20} color="var(--text-muted)" />
         </div>
       </section>
 
@@ -508,7 +508,7 @@ const LandingPage = () => {
               { name: 'Terms', path: '/terms' },
               { name: 'Contact', path: '/contact' }
             ].map(item => (
-              <Link key={item.name} to={item.path} style={{ color: 'rgba(255,255,255,0.4)', fontSize: 'var(--text-sm)', textDecoration: 'none', transition: 'color var(--transition-fast)' }}
+              <Link key={item.name} to={item.path} style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', textDecoration: 'none', transition: 'color var(--transition-fast)' }}
                 onMouseEnter={e => e.target.style.color = '#fff'}
                 onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.4)'}
               >

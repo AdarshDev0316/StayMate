@@ -40,7 +40,7 @@ const Navbar = () => {
 
   const getAvatar = () => {
     if (user?.avatar?.url) return user.avatar.url;
-    return `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'U')}&background=4C5CE7&color=fff&size=128`;
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'U')}&background=1F7A4D&color=fff&size=128`;
   };
 
   return (

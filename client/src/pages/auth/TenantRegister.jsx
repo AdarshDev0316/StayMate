@@ -72,7 +72,7 @@ export default function TenantRegister() {
           {perks.map((perk) => (
             <li key={perk} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <CheckCircle size={16} color="var(--secondary)" />
-              <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem' }}>{perk}</span>
+              <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{perk}</span>
             </li>
           ))}
         </ul>

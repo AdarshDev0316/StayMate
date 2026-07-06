@@ -37,7 +37,7 @@ const Sidebar = ({ role }) => {
       <div style={{ padding: '0 var(--space-6) var(--space-6)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
           <img
-            src={user?.avatar?.url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=4C5CE7&color=fff`}
+            src={user?.avatar?.url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=1F7A4D&color=fff`}
             alt=""
             className="avatar avatar-md"
           />

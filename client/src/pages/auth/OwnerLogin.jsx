@@ -29,7 +29,7 @@ export default function OwnerLogin() {
       <div
         style={{
           flex: '0 0 45%',
-          background: 'linear-gradient(145deg, var(--dark) 0%, #1a1040 55%, var(--dark-2) 100%)',
+          background: 'var(--primary-light)',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -40,7 +40,7 @@ export default function OwnerLogin() {
       >
         {/* Decorative blobs */}
         <div style={{ position: 'absolute', top: -60, left: -60, width: 300, height: 300, borderRadius: '50%', background: 'rgba(76,92,231,0.12)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: -80, right: -40, width: 260, height: 260, borderRadius: '50%', background: 'rgba(8,176,148,0.1)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: -80, right: -40, width: 260, height: 260, borderRadius: '50%', background: 'rgba(31,122,77,0.05)', pointerEvents: 'none' }} />
 
         {/* Logo */}
         <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)', textDecoration: 'none', marginBottom: 'var(--space-12)' }}>

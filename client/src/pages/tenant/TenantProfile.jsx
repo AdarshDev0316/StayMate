@@ -66,7 +66,7 @@ const TenantProfile = () => {
             {/* Avatar & Basic Info */}
             <div style={{ display: 'flex', gap: 'var(--space-6)', paddingBottom: 'var(--space-6)', borderBottom: '1px solid var(--border)', flexWrap: 'wrap' }}>
               <div style={{ position: 'relative' }}>
-                <img src={avatarPreview || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'U')}&background=08B094&color=fff&size=128`} alt="" style={{ width: 100, height: 100, borderRadius: '50%', objectFit: 'cover', border: '4px solid var(--bg)' }} />
+                <img src={avatarPreview || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'U')}&background=1F7A4D&color=fff&size=128`} alt="" style={{ width: 100, height: 100, borderRadius: '50%', objectFit: 'cover', border: '4px solid var(--bg)' }} />
                 <label style={{ position: 'absolute', bottom: 0, right: 0, width: 32, height: 32, borderRadius: '50%', background: 'var(--secondary)', color: 'var(--text)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', border: '2px solid var(--surface)' }}>
                   <Camera size={16} />
                   <input type="file" accept="image/*" onChange={handleAvatarChange} style={{ display: 'none' }} />

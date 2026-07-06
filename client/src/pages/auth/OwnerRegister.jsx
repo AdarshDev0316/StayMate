@@ -39,7 +39,7 @@ export default function OwnerRegister() {
       <div
         style={{
           flex: '0 0 45%',
-          background: 'linear-gradient(145deg, var(--dark) 0%, #1a1040 50%, var(--dark-2) 100%)',
+          background: 'var(--primary-light)',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -49,9 +49,9 @@ export default function OwnerRegister() {
         }}
       >
         {/* Decorative circles */}
-        <div style={{ position: 'absolute', top: -80, left: -80, width: 320, height: 320, borderRadius: '50%', background: 'rgba(76,92,231,0.15)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: -100, right: -60, width: 280, height: 280, borderRadius: '50%', background: 'rgba(8,176,148,0.1)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: '40%', right: -40, width: 180, height: 180, borderRadius: '50%', background: 'rgba(99,102,241,0.08)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: -80, left: -80, width: 320, height: 320, borderRadius: '50%', background: 'rgba(31,122,77,0.05)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: -100, right: -60, width: 280, height: 280, borderRadius: '50%', background: 'rgba(31,122,77,0.05)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '40%', right: -40, width: 180, height: 180, borderRadius: '50%', background: 'rgba(31,122,77,0.05)', pointerEvents: 'none' }} />
 
         {/* Logo */}
         <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)', textDecoration: 'none', marginBottom: 'var(--space-12)' }}>
@@ -76,15 +76,15 @@ export default function OwnerRegister() {
           {perks.map((perk) => (
             <li key={perk} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <CheckCircle size={16} color="var(--secondary)" />
-              <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem' }}>{perk}</span>
+              <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{perk}</span>
             </li>
           ))}
         </ul>
 
         <div style={{ marginTop: '2.5rem', display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ display: 'flex' }}>
-            {['#4C5CE7', '#08B094', '#F59E0B'].map((c, i) => (
-              <div key={c} style={{ width: 30, height: 30, borderRadius: '50%', background: c, border: '2px solid rgba(255,255,255,0.3)', marginLeft: i > 0 ? -8 : 0 }} />
+            {['#1F7A4D', '#1F7A4D', '#F59E0B'].map((c, i) => (
+              <div key={c} style={{ width: 30, height: 30, borderRadius: '50%', background: c, border: 'none', marginLeft: i > 0 ? -8 : 0 }} />
             ))}
           </div>
           <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
