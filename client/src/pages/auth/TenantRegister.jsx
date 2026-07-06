@@ -64,7 +64,7 @@ export default function TenantRegister() {
           Find your perfect<br />
           <span style={{ background: 'linear-gradient(90deg, var(--secondary), #a7f3d0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>home today</span>
         </h1>
-        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1rem', lineHeight: 1.6 }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.6 }}>
           Let AI match you with the best listings based on your unique preferences and lifestyle.
         </p>
 
@@ -82,7 +82,7 @@ export default function TenantRegister() {
             {[1, 2, 3, 4].map((i) => <Star key={i} size={14} fill="#F59E0B" color="#F59E0B" />)}
             <Star size={14} fill="none" color="#F59E0B" />
           </div>
-          <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem' }}>
+          <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
             Loved by <strong style={{ color: 'var(--dark)' }}>15,000+</strong> happy tenants
           </span>
         </div>

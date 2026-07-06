@@ -67,7 +67,7 @@ export default function OwnerRegister() {
             Grow your rental<br />
             <span style={{ background: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>business today</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1rem', lineHeight: 1.6 }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.6 }}>
             Join thousands of property owners who trust StayMate to connect with quality tenants.
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function OwnerRegister() {
               <div key={c} style={{ width: 30, height: 30, borderRadius: '50%', background: c, border: '2px solid rgba(255,255,255,0.3)', marginLeft: i > 0 ? -8 : 0 }} />
             ))}
           </div>
-          <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem' }}>
+          <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
             Join <strong style={{ color: 'var(--dark)' }}>2,400+</strong> property owners
           </span>
         </div>

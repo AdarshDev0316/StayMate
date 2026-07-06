@@ -135,7 +135,7 @@ const ChatLayout = ({ role }) => {
                           {typingUsers[conv._id]?.has(other?._id) ? <span style={{ color: 'var(--primary)' }}>typing...</span> : conv.lastMessage?.type === 'system' ? 'System message' : conv.lastMessage?.text || 'No messages'}
                         </span>
                         {conv.unreadCount > 0 && (
-                          <span style={{ background: 'var(--primary)', color: '#fff', fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 'var(--radius-full)' }}>{conv.unreadCount}</span>
+                          <span style={{ background: 'var(--primary)', color: 'var(--text)', fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 'var(--radius-full)' }}>{conv.unreadCount}</span>
                         )}
                       </div>
                     </div>

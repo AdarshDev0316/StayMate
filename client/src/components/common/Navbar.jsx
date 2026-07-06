@@ -64,12 +64,12 @@ const Navbar = () => {
               borderRadius: 'var(--radius)',
               fontSize: 'var(--text-sm)',
               fontWeight: 500,
-              color: isScrolled || !isLanding ? 'var(--text-muted)' : 'rgba(255,255,255,0.85)',
+              color: 'var(--text-muted)',
               transition: 'all var(--transition-fast)',
               textDecoration: 'none',
             }}
-              onMouseEnter={e => { e.target.style.background = isScrolled || !isLanding ? 'var(--bg-2)' : 'rgba(255,255,255,0.1)'; e.target.style.color = isScrolled || !isLanding ? 'var(--text)' : '#fff'; }}
-              onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = isScrolled || !isLanding ? 'var(--text-muted)' : 'rgba(255,255,255,0.85)'; }}
+              onMouseEnter={e => { e.target.style.background = isScrolled || !isLanding ? 'var(--bg-2)' : 'rgba(255,255,255,0.1)'; e.target.style.color = 'var(--text)'; }}
+              onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = 'var(--text-muted)'; }}
               onClick={(e) => {
                 if (to.includes('#')) {
                   const id = to.split('#')[1];
@@ -101,14 +101,14 @@ const Navbar = () => {
                     background: isScrolled || !isLanding ? 'var(--surface)' : 'rgba(255,255,255,0.1)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     cursor: 'pointer', position: 'relative', transition: 'all var(--transition-fast)',
-                    color: isScrolled || !isLanding ? 'var(--text-muted)' : '#fff',
+                    color: 'var(--text-muted)',
                   }}
                 >
                   <Bell size={18} />
                   {unreadCount > 0 && (
                     <span style={{
                       position: 'absolute', top: -4, right: -4,
-                      background: 'var(--danger)', color: '#fff',
+                      background: 'var(--danger)', color: 'var(--text)',
                       borderRadius: 'var(--radius-full)', fontSize: 10,
                       fontWeight: 700, minWidth: 18, height: 18,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -182,7 +182,7 @@ const Navbar = () => {
                   }}
                 >
                   <img src={getAvatar()} alt={user.name} style={{ width: 28, height: 28, borderRadius: '50%', objectFit: 'cover' }} />
-                  <span style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: isScrolled || !isLanding ? 'var(--text)' : '#fff', maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <span style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text)', maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {user.name.split(' ')[0]}
                   </span>
                   <ChevronDown size={14} color={isScrolled || !isLanding ? 'var(--text-muted)' : 'rgba(255,255,255,0.7)'} style={{ transform: isProfileOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform var(--transition-fast)' }} />
@@ -226,7 +226,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Link to="/owner/login" style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: isScrolled || !isLanding ? 'var(--text-muted)' : 'rgba(255,255,255,0.85)', textDecoration: 'none', padding: '0.5rem 1rem', transition: 'color var(--transition-fast)' }}>
+              <Link to="/owner/login" style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-muted)', textDecoration: 'none', padding: '0.5rem 1rem', transition: 'color var(--transition-fast)' }}>
                 Login
               </Link>
               <Link to="/tenant/register" className="btn btn-primary btn-sm">
@@ -238,7 +238,7 @@ const Navbar = () => {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            style={{ display: 'none', padding: 'var(--space-2)', borderRadius: 'var(--radius)', background: 'transparent', border: 'none', cursor: 'pointer', color: isScrolled || !isLanding ? 'var(--text)' : '#fff' }}
+            style={{ display: 'none', padding: 'var(--space-2)', borderRadius: 'var(--radius)', background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text)' }}
             className="mobile-menu-btn"
           >
             {isMobileOpen ? <X size={22} /> : <Menu size={22} />}

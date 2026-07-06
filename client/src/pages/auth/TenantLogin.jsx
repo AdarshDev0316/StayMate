@@ -55,7 +55,7 @@ export default function TenantLogin() {
           Welcome back,<br />
           <span style={{ background: 'linear-gradient(90deg, var(--secondary), #a7f3d0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>future resident!</span>
         </h1>
-        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' }}>
           Sign in to discover AI-matched properties, chat with owners, and find your perfect home.
         </p>
 
@@ -63,7 +63,7 @@ export default function TenantLogin() {
           {[{ label: 'Properties Listed', val: '50K+' }, { label: 'Cities Covered', val: '120+' }, { label: 'Happy Tenants', val: '15K+' }].map(({ label, val }) => (
             <div key={label}>
               <div style={{ fontWeight: 800, fontSize: '1.4rem', color: 'var(--dark)' }}>{val}</div>
-              <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>{label}</div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{label}</div>
             </div>
           ))}
         </div>

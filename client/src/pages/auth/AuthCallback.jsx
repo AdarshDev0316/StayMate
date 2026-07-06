@@ -50,7 +50,7 @@ export default function AuthCallback() {
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
         <Loader2 size={36} color="var(--primary)" style={{ animation: 'spin 1s linear infinite' }} />
-        <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 'var(--text-sm)' }}>Completing sign in…</p>
+        <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)' }}>Completing sign in…</p>
       </div>
 
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>

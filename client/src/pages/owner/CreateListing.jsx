@@ -293,9 +293,9 @@ const CreateListing = () => {
                       <div key={i} style={{ position: 'relative', aspectRatio: '4/3', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
                         <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         {i === 0 && (
-                          <span style={{ position: 'absolute', top: 4, left: 4, background: 'var(--primary)', color: '#fff', fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 4 }}>Cover</span>
+                          <span style={{ position: 'absolute', top: 4, left: 4, background: 'var(--primary)', color: 'var(--text)', fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 4 }}>Cover</span>
                         )}
-                        <button type="button" onClick={() => removeImage(i)} style={{ position: 'absolute', top: 4, right: 4, width: 22, height: 22, borderRadius: '50%', background: 'rgba(0,0,0,0.7)', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+                        <button type="button" onClick={() => removeImage(i)} style={{ position: 'absolute', top: 4, right: 4, width: 22, height: 22, borderRadius: '50%', background: 'rgba(0,0,0,0.7)', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text)' }}>
                           <X size={12} />
                         </button>
                       </div>

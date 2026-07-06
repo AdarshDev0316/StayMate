@@ -94,7 +94,7 @@ const StepCard = ({ number, title, description, isOwner }) => (
       width: 40, height: 40, borderRadius: 'var(--radius-full)', flexShrink: 0,
       background: isOwner ? 'var(--primary)' : 'var(--secondary)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      color: '#fff', fontWeight: 800, fontSize: 'var(--text-sm)',
+      color: 'var(--text)', fontWeight: 800, fontSize: 'var(--text-sm)',
     }}>
       {number}
     </div>
@@ -178,16 +178,16 @@ const LandingPage = () => {
 
             {/* ─── Search Box ──────────────────────────────────────────── */}
             <form onSubmit={handleSearch} style={{
-              background: 'rgba(255,255,255,0.08)',
+              background: 'var(--bg-2)',
               backdropFilter: 'blur(16px)',
-              border: '1px solid rgba(255,255,255,0.15)',
+              border: '1px solid var(--border)',
               borderRadius: 'var(--radius-xl)',
               padding: 'var(--space-4)',
               display: 'flex', flexDirection: 'column', gap: 'var(--space-3)',
             }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 'var(--space-3)' }}>
                 <div style={{ position: 'relative' }}>
-                  <MapPin size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.5)' }} />
+                  <MapPin size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                   <input
                     type="text"
                     placeholder="Location"
@@ -195,14 +195,14 @@ const LandingPage = () => {
                     onChange={e => setSearchForm(p => ({ ...p, city: e.target.value }))}
                     style={{
                       width: '100%', padding: '0.7rem 1rem 0.7rem 2.5rem',
-                      background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
-                      borderRadius: 'var(--radius)', color: '#fff', fontSize: 'var(--text-sm)',
+                      background: 'var(--bg-2)', border: '1px solid var(--border)',
+                      borderRadius: 'var(--radius)', color: 'var(--text)', fontSize: 'var(--text-sm)',
                       outline: 'none', fontFamily: 'var(--font)',
                     }}
                   />
                 </div>
                 <div style={{ position: 'relative' }}>
-                  <DollarSign size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.5)' }} />
+                  <DollarSign size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                   <input
                     type="number"
                     placeholder="Min ₹"
@@ -210,14 +210,14 @@ const LandingPage = () => {
                     onChange={e => setSearchForm(p => ({ ...p, minRent: e.target.value }))}
                     style={{
                       width: '100%', padding: '0.7rem 1rem 0.7rem 2.5rem',
-                      background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
-                      borderRadius: 'var(--radius)', color: '#fff', fontSize: 'var(--text-sm)',
+                      background: 'var(--bg-2)', border: '1px solid var(--border)',
+                      borderRadius: 'var(--radius)', color: 'var(--text)', fontSize: 'var(--text-sm)',
                       outline: 'none', fontFamily: 'var(--font)',
                     }}
                   />
                 </div>
                 <div style={{ position: 'relative' }}>
-                  <DollarSign size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.5)' }} />
+                  <DollarSign size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                   <input
                     type="number"
                     placeholder="Max ₹"
@@ -225,8 +225,8 @@ const LandingPage = () => {
                     onChange={e => setSearchForm(p => ({ ...p, maxRent: e.target.value }))}
                     style={{
                       width: '100%', padding: '0.7rem 1rem 0.7rem 2.5rem',
-                      background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
-                      borderRadius: 'var(--radius)', color: '#fff', fontSize: 'var(--text-sm)',
+                      background: 'var(--bg-2)', border: '1px solid var(--border)',
+                      borderRadius: 'var(--radius)', color: 'var(--text)', fontSize: 'var(--text-sm)',
                       outline: 'none', fontFamily: 'var(--font)',
                     }}
                   />
@@ -244,7 +244,7 @@ const LandingPage = () => {
                 { icon: <Shield size={14} />, text: 'Secure Platform' },
                 { icon: <Zap size={14} />, text: 'Instant Match' },
               ].map(({ icon, text }) => (
-                <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.6)', fontSize: 'var(--text-xs)', fontWeight: 500 }}>
+                <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)', fontSize: 'var(--text-xs)', fontWeight: 500 }}>
                   <span style={{ color: 'var(--secondary)' }}>{icon}</span>
                   {text}
                 </div>

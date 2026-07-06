@@ -182,7 +182,7 @@ const ListingDetails = () => {
                 </>
               )}
               {images.length > 1 && (
-                <div style={{ position: 'absolute', top: 16, right: 16, background: 'rgba(0,0,0,0.6)', color: '#fff', padding: '4px 10px', borderRadius: 'var(--radius-full)', fontSize: 12, fontWeight: 600 }}>
+                <div style={{ position: 'absolute', top: 16, right: 16, background: 'rgba(0,0,0,0.6)', color: 'var(--text)', padding: '4px 10px', borderRadius: 'var(--radius-full)', fontSize: 12, fontWeight: 600 }}>
                   {activeImage + 1} / {images.length}
                 </div>
               )}

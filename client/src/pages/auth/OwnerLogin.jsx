@@ -56,7 +56,7 @@ export default function OwnerLogin() {
           Welcome back,<br />
           <span style={{ background: 'linear-gradient(90deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>property owner!</span>
         </h1>
-        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem' }}>
           Sign in to manage your listings, review tenant interests, and grow your rental portfolio.
         </p>
 
@@ -65,7 +65,7 @@ export default function OwnerLogin() {
           {[{ label: 'Listings Active', val: '12K+' }, { label: 'Tenants Matched', val: '48K+' }, { label: 'Success Rate', val: '94%' }].map(({ label, val }) => (
             <div key={label}>
               <div style={{ fontWeight: 800, fontSize: '1.4rem', color: 'var(--dark)' }}>{val}</div>
-              <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>{label}</div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{label}</div>
             </div>
           ))}
         </div>

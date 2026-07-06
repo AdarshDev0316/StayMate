@@ -30,7 +30,7 @@ const AdminLogin = () => {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: 'var(--space-6)' }}>
       <div className="card" style={{ width: '100%', maxWidth: 480, overflow: 'hidden', boxShadow: 'var(--shadow-xl)' }}>
-        <div style={{ background: 'linear-gradient(135deg, var(--danger), #BE123C)', padding: 'var(--space-8)', textAlign: 'center', color: '#fff' }}>
+        <div style={{ background: 'linear-gradient(135deg, var(--danger), #BE123C)', padding: 'var(--space-8)', textAlign: 'center', color: 'var(--text)' }}>
           <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto var(--space-4)' }}>
             <Shield size={32} color="#fff" />
           </div>
