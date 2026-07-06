@@ -156,6 +156,7 @@ const getMyListings = asyncHandler(async (req, res) => {
 const updateListing = asyncHandler(async (req, res) => {
   const listing = await Listing.findOne({ _id: req.params.id, owner: req.user._id });
   if (!listing) throw new ApiError(404, 'Listing not found or access denied.');
+  if (listing.isDummy) throw new ApiError(403, 'Cannot modify or delete dummy data.');
 
   const updates = { ...req.body };
   if (updates.location && typeof updates.location === 'string') updates.location = JSON.parse(updates.location);
@@ -181,6 +182,7 @@ const deleteListingImage = asyncHandler(async (req, res) => {
   const { imageId } = req.params;
   const listing = await Listing.findOne({ _id: req.params.id, owner: req.user._id });
   if (!listing) throw new ApiError(404, 'Listing not found.');
+  if (listing.isDummy) throw new ApiError(403, 'Cannot modify or delete dummy data.');
 
   const imgIndex = listing.images.findIndex(img => img._id.toString() === imageId || img.publicId === imageId);
   if (imgIndex === -1) throw new ApiError(404, 'Image not found.');
@@ -203,13 +205,12 @@ const updateListingStatus = asyncHandler(async (req, res) => {
     throw new ApiError(400, 'Invalid status value.');
   }
 
-  const listing = await Listing.findOneAndUpdate(
-    { _id: req.params.id, owner: req.user._id },
-    { status },
-    { new: true }
-  );
-
+  const listing = await Listing.findOne({ _id: req.params.id, owner: req.user._id });
   if (!listing) throw new ApiError(404, 'Listing not found.');
+  if (listing.isDummy) throw new ApiError(403, 'Cannot modify or delete dummy data.');
+
+  listing.status = status;
+  await listing.save();
 
   res.status(200).json(
     new ApiResponse(200, { listing }, `Listing marked as ${status}.`)
@@ -220,6 +221,7 @@ const updateListingStatus = asyncHandler(async (req, res) => {
 const deleteListing = asyncHandler(async (req, res) => {
   const listing = await Listing.findOne({ _id: req.params.id, owner: req.user._id });
   if (!listing) throw new ApiError(404, 'Listing not found.');
+  if (listing.isDummy) throw new ApiError(403, 'Cannot modify or delete dummy data.');
 
   // Delete all images from Cloudinary
   await Promise.allSettled(

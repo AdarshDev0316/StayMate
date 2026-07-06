@@ -100,6 +100,7 @@ const userSchema = new mongoose.Schema(
 
     isActive: { type: Boolean, default: true },
     lastSeen: { type: Date, default: Date.now },
+    isDummy: { type: Boolean, default: false },
   },
   {
     timestamps: true,

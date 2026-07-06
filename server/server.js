@@ -3,12 +3,16 @@ const http = require('http');
 const app = require('./app');
 const { initSocket } = require('./src/config/socket');
 const connectDB = require('./src/config/db');
+const seedDummyData = require('./src/utils/seedDummyData');
 
 const PORT = process.env.PORT || 5000;
 
 console.log("URI from env:", process.env.MONGODB_URI ? process.env.MONGODB_URI.substring(0, 50) + "..." : "undefined");
 // Connect to MongoDB then start server
-connectDB().then(() => {
+connectDB().then(async () => {
+  // Seed database with dummy data
+  await seedDummyData();
+
   const server = http.createServer(app);
   
   // Initialize Socket.io
