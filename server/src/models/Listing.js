@@ -115,7 +115,14 @@ const listingSchema = new mongoose.Schema(
     },
     views: { type: Number, default: 0 },
     interestedCount: { type: Number, default: 0 },
-    isDummy: { type: Boolean, default: false },
+    activeDays: {
+      type: Number,
+      default: 0,
+    },
+    isPermanent: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
