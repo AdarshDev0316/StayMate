@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import SplashScreen from './components/SplashScreen/SplashScreen';
 
 // Stores
 import useAuthStore from './store/authStore';
@@ -92,12 +93,22 @@ const PageTitle = ({ title, children }) => {
 // ─── App ──────────────────────────────────────────────────────────────────────
 function App() {
   const { isAuthenticated, fetchMe, accessToken } = useAuthStore();
+  const [showSplash, setShowSplash] = React.useState(true);
 
   useEffect(() => {
     if (isAuthenticated && accessToken) {
       fetchMe();
     }
   }, []);
+
+  if (showSplash) {
+    return (
+      <SplashScreen onComplete={() => {
+        sessionStorage.setItem('splashShown', 'true');
+        setShowSplash(false);
+      }} />
+    );
+  }
 
   return (
     <BrowserRouter>
